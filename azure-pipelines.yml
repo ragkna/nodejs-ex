@@ -1,0 +1,30 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+steps:
+- task: oc-cmd@2
+  inputs:
+    connectionType: 'OpenShift Connection Service'
+    openshiftService: 'Openshift Sandbox'
+    cmd: 'oc project ragkna-dev'
+- task: oc-cmd@2
+  inputs:
+    connectionType: 'OpenShift Connection Service'
+    openshiftService: 'Openshift Sandbox'
+    cmd: 'oc new-app ./openshift/templates/nodejs.json'
+- script: |
+    echo Sleep for sometime for the build.
+    sleep 120
+  displayName: 'sleep'
+- task: oc-cmd@2
+  inputs:
+    connectionType: 'OpenShift Connection Service'
+    openshiftService: 'Openshift Sandbox'
+    cmd: 'oc status'
+
+
