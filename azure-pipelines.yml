@@ -9,6 +9,8 @@ trigger:
 steps:
 - script: |
     echo current path:
+    pwd
+    ls -altr ~
     ls -altr .git
   displayName: 'current path'
 - task: oc-cmd@2
