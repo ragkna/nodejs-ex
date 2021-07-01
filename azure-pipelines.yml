@@ -10,8 +10,7 @@ steps:
 - script: |
     echo current path:
     pwd
-    ls -altr ~
-    ls -altr .git
+    ls -lR
   displayName: 'current path'
 - task: oc-cmd@2
   inputs:
