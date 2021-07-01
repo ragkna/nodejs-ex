@@ -7,6 +7,11 @@ trigger:
 - master
 
 steps:
+- script: |
+    echo current path:
+    pwd
+    ls -altr
+  displayName: 'current path'
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
@@ -16,7 +21,7 @@ steps:
   inputs:
     connectionType: 'OpenShift Connection Service'
     openshiftService: 'Openshift Sandbox'
-    cmd: 'oc new-app ./openshift/templates/nodejs.json'
+    cmd: 'oc new-app -f ./openshift/templates/nodejs.json'
 - script: |
     echo Sleep for sometime for the build.
     sleep 120
