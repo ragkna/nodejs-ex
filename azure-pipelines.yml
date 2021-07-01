@@ -21,7 +21,7 @@ steps:
   inputs:
     connectionType: 'OpenShift Connection Service'
     openshiftService: 'Openshift Sandbox'
-    cmd: 'oc new-app -f ./openshift/templates/nodejs.json'
+    cmd: 'oc new-app -f /home/vsts/work/1/s/openshift/templates/nodejs.json'
 - script: |
     echo Sleep for sometime for the build.
     sleep 120
